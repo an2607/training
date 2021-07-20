@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vnext_Training::banner_manager" title="Banner Manager"  module="Vnext_Training"   action="backend/banner/index" resource="Vnext_Training::banner_manager"/>
+        <add id="Vnext_Training::list_banner" title="List Manager"  module="Vnext_Training"   action="backend/banner/index" resource="Vnext_Training::banner_manager" parent="Vnext_Training::banner_manager"/>
+
+        <add id="Vnext_Training::student_manager" title="Student" module="Vnext_Training" sortOrder="51" resource="Vnext_Training::student_manager"/>
+        <add id="Vnext_Training::student" title="Manage Student" module="Vnext_Training" sortOrder="10" action="backend/student/index" resource="Vnext_Training::student_manager" parent="Vnext_Training::student_manager"/>
+    </menu>
+</config>

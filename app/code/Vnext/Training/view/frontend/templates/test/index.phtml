@@ -1,0 +1,55 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+
+/** @var \Vnext\Training\ViewModel\Training\Test $viewModel */
+
+$viewModel = $block->getViewModel();
+
+?>
+<?php
+$customerData = $viewModel->getListDataStudent();
+?>
+
+<div class="training-content">
+    <div class="search-container">
+        <form action="<?php $block->getUrl('training/student/index') ?>" method="GET">
+            <label>Search:</label>
+            <input type="text" placeholder="Tìm kiếm.." value="<?php if (isset($_GET['search'])) {
+                echo $_GET['search'];
+            } ?>" name="search"><br><br>
+            <button type="submit" value="submit">Submit</button>
+        </form>
+    </div>
+    <table id="table" data-toggle="table">
+        <thead>
+        <tr>
+            <th data-sortable="true">entity_id</th>
+            <th data-sortable="true">Name</th>
+            <th>Gender</th>
+            <th data-sortable="true">DOB</th>
+            <th>Address</th>
+            <th>email</th>
+            <th>slug</th>
+            <th>Created_up</th>
+            <th>Update_up</th>
+<!--            <th>Action</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($customerData as $data): ?>
+            <tr>
+                <td><?= $data['entity_id'] ?></td>
+                <td><?= $data['name'] ?></td>
+                <td><?= $data['gender'] ?></td>
+                <td><?= $data['dob'] ?></td>
+                <td><?= $data['address'] ?></td>
+                <td><?= $data['email'] ?></td>
+                <td><?= $data['slug'] ?></td>
+                <td><?= $data['created_at'] ?></td>
+                <td><?= $data['updated_at'] ?></td>
+<!--                <td><a href="/training/student/index/detail?id=--><?//= $data['entity_id'] ?><!--">detail</a></td>-->
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

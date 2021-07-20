@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<page  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+<!--            <block class="Vnext\Training\Block\Adminhtml\Index\Index" name="backend.index.index" template="Vnext_Training::index/index.phtml"/>-->
+<!--            <block class="Vnext\Training\Block\Adminhtml\Banner\Index" name="backend.banner.index" template="Vnext_Training::banner/banner.phtml"/>-->
+            <uiComponent name="banner_listing"/>
+
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,151 @@
+<?php
+/** @var \Vnext\Training\Block\Student\Index $block
+ */
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet"/>
+<style>
+    .pagination {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+
+<?php
+//$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+//$model=$objectManager->create('Vnext\Training\Model\Student');
+$dataStudent = $block->getCollection();
+
+?>
+
+<div class="training-content">
+    <div class="search-container">
+        <?php $dataStudent = $this->getListNews() ?>
+        <form action="<?php $block->getUrl('training/student/index') ?>" method="GET">
+            <div class="d-flex" style="display: flex; justify-content: center;">
+                <div style="width: 30%; margin-right: 30px">
+                    <label>Sắp xếp </label>
+                    <select name="sort" id="sort">
+                        <option value="">Sắp xếp</option>
+                        <option value="tang_id" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'tang_id') {
+                            echo 'selected';
+                        } ?> name="sort">Tăng ID
+                        </option>
+                        <option value="giam_id" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'giam_id') {
+                            echo 'selected';
+                        } ?> name="sort">Giảm ID
+                        </option>
+                        <option value="tang_name" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'tang_name') {
+                            echo 'selected';
+                        } ?> name="sort">Tăng Name
+                        </option>
+                        <option value="giam_name" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'giam_name') {
+                            echo 'selected';
+                        } ?> name="sort">Giảm Name
+                        </option>
+                        <option value="tang_dob" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'tang_dob') {
+                            echo 'selected';
+                        } ?> name="sort">Tăng DOB
+                        </option>
+                        <option value="giam_dob" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'giam_dob') {
+                            echo 'selected';
+                        } ?> name="sort">Giảm DOB
+                        </option>
+                    </select>
+                </div>
+                <div style="width: 30%;">
+                    <label>Search Gender:</label>
+                    <select name="gender" id="gender">
+                        <option value="">--Gender--</option>
+                        <option value="nam" <?php if (isset($_GET['gender']) && $_GET['gender'] == 'nam') {
+                            echo 'selected';
+                        } ?> name="gender" name="gender">Nam
+                        </option>
+                        <option value="nu" <?php if (isset($_GET['gender']) && $_GET['gender'] == 'nu') {
+                            echo 'selected';
+                        } ?> name="gender">Nu
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <label>Search:</label>
+            <input type="text" placeholder="Tìm kiếm.." value="<?php if (isset($_GET['search'])) {
+                echo $_GET['search'];
+            } ?>" name="search"><br><br>
+
+            <div class="d-flex" style="display: flex; justify-content: center;">
+                <label style="margin-right: 30px" for="age">Age : </label>
+                <input style="width: 30%; margin-right: 30px" type="date" name="from" placeholder="from"
+                       value="<?php if (isset($_GET['from'])) {
+                           echo $_GET['from'];
+                       } ?>">
+                <input style="width: 30%;" type="date" name="to" placeholder="to" value="<?php if (isset($_GET['to'])) {
+                    echo $_GET['to'];
+                } ?>">
+            </div>
+
+            <button type="submit" value="submit">Submit</button>
+        </form>
+    </div>
+    <table id="table" data-toggle="table">
+        <thead>
+        <tr>
+            <th data-sortable="true">entity_id</th>
+            <th data-sortable="true">Name</th>
+            <th>Gender</th>
+            <th data-sortable="true">DOB</th>
+            <th>Address</th>
+            <th>email</th>
+            <th>slug</th>
+<!--            <th>Created_up</th>-->
+<!--            <th>Update_up</th>-->
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <?php if ($dataStudent && count($dataStudent)): ?>
+        <?php foreach ($dataStudent as $data): ?>
+            <tr>
+                <td><?= $data['entity_id'] ?></td>
+                <td><?= $data['name'] ?></td>
+                <td><?= $data['gender'] ?></td>
+                <td><?= $data['dob'] ?></td>
+                <td><?= $data['address'] ?></td>
+                <td><?= $data['email'] ?></td>
+                <td><?= $data['slug'] ?></td>
+<!--                <td>--><?//= $data['created_at'] ?><!--</td>-->
+<!--                <td>--><?//= $data['updated_at'] ?><!--</td>-->
+                <td><a href="/training/student/detail?slug=<?= $data['entity_id'].'-'.$data['name'] ?>">detail</a></td>
+
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+    <?php endif; ?>
+</div>
+
+

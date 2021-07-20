@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<page  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Vnext\Training\Block\Student\Detail" name="training.student.datail" template="Vnext_Training::student/detail.phtml"/>
+            <!--            <block class="Vnext\Training\Block\Student\Index" name="training.student.index" template="Vnext_Training::student/learning.phtml"/>-->
+
+        </referenceContainer>
+        <!--        <referenceBlock name="test.index"  class="Magento\Framework\View\Element\Template" template="Vnext_Training::test/index.phtml">-->
+        <!--            <arguments>-->
+        <!--                <argument name="view_model" xsi:type="object">Vnext\Training\ViewModel\Training\Test</argument>-->
+        <!--            </arguments>-->
+        <!--        </referenceBlock>-->
+        <!--        <referenceContainer name="content">-->
+        <!--            <block class="Magento\Framework\View\Element\Template"-->
+        <!--                   name="vnext.training"-->
+        <!--                   template="Vnext_Training::test/index.phtml">-->
+        <!--                <arguments>-->
+        <!--                    <argument name="view_model" xsi:type="object">Vnext\Training\ViewModel\Training\Test</argument>-->
+        <!--&lt;!&ndash;                    <argument translate="true" name="title" xsi:type="string">Routing Page</argument>&ndash;&gt;-->
+
+        <!--                </arguments>-->
+        <!--            </block>-->
+        <!--        </referenceContainer>-->
+    </body>
+</page>

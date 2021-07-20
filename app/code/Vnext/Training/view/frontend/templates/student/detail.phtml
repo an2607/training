@@ -1,0 +1,33 @@
+<?php
+/** @var \Vnext\Training\Block\Template $block */
+
+$student = $this->getStudentDetail();
+?>
+<div class="template">
+    <table border=1 table id="table" data-toggle="table">
+        <thead>
+        <tr align=center>
+            <th>Id</th>
+            <th>Fist Name</th>
+            <th>Gender</th>
+            <th>Date of birth</th>
+            <th>Address</th>
+            <th>email</th>
+            <th>slug</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td><?= $student['entity_id'] ?></td>
+            <td><?= $student['name'] ?></td>
+            <td><?= $student['gender']?></td>
+            <td><?= $student['dob'] ?></td>
+            <td><?= $student['address'] ?></td>
+            <th><?= $student['email'] ?></th>
+            <th><?= $student['slug'] ?></th>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
