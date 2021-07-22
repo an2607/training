@@ -38,4 +38,18 @@
         </arguments>
     </virtualType>
 
+    /* plugin */
+
+<!--    <type name="Magento\Checkout\Model\Cart">-->
+<!--        <plugin name="beforeAddtoCart" type="Vnext\Training\Plugin\Cart" disabled="false" sortOrder="1" />-->
+<!--    </type>-->
+<!--    <type name="Magento\Catalog\Model\Product">-->
+<!--        <plugin name="afterProductName" type="Vnext\Training\Plugin\Product" disabled="false" sortOrder="1" />-->
+<!--    </type>-->
+<!--    <type name="Magento\Checkout\Model\Cart">-->
+<!--        <plugin name="aroundAddtoCart" type="Vnext\Training\Plugin\Cart" disabled="false" sortOrder="1" />-->
+<!--    </type>-->
+
+    <preference for="Magento\Catalog\Model\Product" type="Vnext\Training\Model\Catalog\Product" />
+
 </config>
