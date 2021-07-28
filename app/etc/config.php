@@ -265,6 +265,7 @@ return [
         'Temando_Shipping' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidation' => 1,
+        'Vnext_CustomizeProduct' => 1,
         'Vnext_Training' => 1,
         'Yotpo_Yotpo' => 1
     ]
