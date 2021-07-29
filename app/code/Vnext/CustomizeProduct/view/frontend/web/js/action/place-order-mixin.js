@@ -1,20 +1,16 @@
-define(
-    [
-        'jquery',
-        'mage/utls/wrapper'
-    ],
-    function ($,wrapper) {
-        'use strict';
-        return function(placeOrderAction){
-
-            return wrapper.wrapp(placeOrderAction, function(originalAction, paymentData, messageContainer){
-                if(paymentData['extention_atribute'] === indefined){
-                    paymentData['extention_atribute'] = {};
-                }
-                var customerinput = $('.payment-method input[name="payment[method]"]:checked').parents('.payment-method').find('order-comment');
-                paymentData['extention_atribute']['custom-note'] = customerinput.val();
-                return originalAction(paymentData, messageContainer);
-            })
-        }
-    }
-);
+define([
+    'jquery',
+    'mage/utils/wrapper'
+], function ($, wrapper) {
+    'use strict';
+    return function (placeOrderAction) {
+        return wrapper.wrap(placeOrderAction, function (originalAction, paymentData, messageContainer) {
+            if (paymentData['extension_attributes'] === undefined) {
+                paymentData['extension_attributes'] = {};
+            }
+            var customerInput = $('.order-comment');
+            paymentData['extension_attributes']['customer_note'] = customerInput.val();
+            return originalAction(paymentData, messageContainer);
+        });
+    };
+});
