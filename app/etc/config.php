@@ -267,7 +267,8 @@ return [
         'Vertex_AddressValidation' => 1,
         'Vnext_CustomImport' => 1,
         'Vnext_CustomMyAccount' => 1,
-        'Vnext_CustomizeProduct' => 1,
+        'Vnext_CustomizeProduct' => 0,
+        'Vnext_ProductShippingMethod' => 1,
         'Vnext_Training' => 1,
         'Yotpo_Yotpo' => 1
     ]
